@@ -20,7 +20,7 @@ const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateA
 								: "text-[#49557E] text-base md:text-lg cursor-pointer"
 						}
 					>
-						<Link to="/">Home</Link>
+						<Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Home</Link>
 					</li>
 					<li
 						onClick={() => isMenu("menu")}

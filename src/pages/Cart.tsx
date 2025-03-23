@@ -1,9 +1,11 @@
 import { removeFromCart } from "@store/Cart/cart.slice";
-import useCart from "@hooks/useCart";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import useCart from "@hooks/useCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 	const {items, foodList, CalculateSubtoal, changeQuantityHandler, renderOptions} = useCart();
 	return (
 		<main className="my-[150px]">
@@ -69,15 +71,16 @@ const Cart = () => {
             <hr className="h-[1px] bg-[#e2e2e2] border-none my-2.5" />
             <div className="cart-total-details flex justify-between text-[#555]">
               <p>Delivery Fee: </p>
-              <p>$10</p>
+              <p>${CalculateSubtoal ? 10 : 0}</p>
             </div>
             <hr className="h-[1px] bg-[#e2e2e2] border-none my-2.5" />
             <div className="cart-total-details flex justify-between text-[#555]">
               <strong>Total</strong>
-              <strong>${CalculateSubtoal ? CalculateSubtoal + 10 : 10}</strong>
+              <strong>${CalculateSubtoal ? CalculateSubtoal + 10 : 0}</strong>
             </div>
           </div>
           <button
+            onClick={() => navigate("/order")}
             className="block w-full rounded-md bg-tomato px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-tomato/90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tomato uppercase cursor-pointer"
           >
             Proceed To Checkout

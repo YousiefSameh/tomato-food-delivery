@@ -24,8 +24,8 @@ const getTotalCartAmountSelector = createSelector(
 			if (itemInfo) {
 				totalAmount += itemInfo.price * items[item];
 			}
-			return totalAmount;
 		}
+		return totalAmount;
 	}
 );
 
