@@ -1,22 +1,10 @@
-import { useState } from "react";
-import { useAppDispatch } from "@store/hooks";
-import { addToCart, removeFromCart } from "@store/Cart/cart.slice";
+import { memo } from "react";
 import { type IProduct } from "@customTypes/FoodList.types";
+import useFoodItem from "@hooks/useFoodItem";
 import { assets } from "@frontendAssets/assets";
 
-const FoodItem = ({ _id, name, description, price, image }: IProduct) => {
-  const [itemCount, setItemCount] = useState(0);
-	const dispatch = useAppDispatch();
-
-  const handleAddToCart = () => {
-    setItemCount(itemCount + 1);
-    dispatch(addToCart(_id));
-  }
-
-  const handleRemoveFromCart = () => {
-    setItemCount(itemCount - 1);
-    dispatch(removeFromCart(_id));
-  }
+const FoodItem = memo(({ _id, name, description, price, image }: IProduct) => {
+	const {handleAddToCart, handleRemoveFromCart, itemCount} = useFoodItem(_id);
 
 	return (
 		<article
@@ -54,6 +42,6 @@ const FoodItem = ({ _id, name, description, price, image }: IProduct) => {
 			</div>
 		</article>
 	);
-};
+});
 
 export default FoodItem;

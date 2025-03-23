@@ -68,7 +68,7 @@ const Login = ({setShowLogin}: {setShowLogin: React.Dispatch<React.SetStateActio
 				</div>
 				<button
           type="submit"
-          className="block w-full rounded-md bg-tomato px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-tomato/95 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tomato cursor-pointer"
+          className="block w-full rounded-md bg-tomato px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-tomato/90 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tomato cursor-pointer"
         >
 					{currentState === "Sign Up" ? "Create an Account" : "Login"}
 				</button>
