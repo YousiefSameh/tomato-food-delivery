@@ -42,7 +42,7 @@ const FoodItem = ({ _id, name, description, price, image }: IProduct) => {
 			</div>
 			<div className="px-5 py-3">
 				<div className="flex justify-between items-center pb-1">
-					<h4 className="text-xl font-medium">{name}</h4>
+					<p className="text-xl font-medium">{name}</p>
 					<img
 						className="w-[70px]"
 						src={assets.rating_starts}

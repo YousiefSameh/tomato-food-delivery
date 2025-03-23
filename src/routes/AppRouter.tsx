@@ -1,13 +1,12 @@
-import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Templates
 import MainTemplate from "@templates/main.template";
 
 // Pages
-const Home = lazy(() => import("@pages/Home"));
-const Cart = lazy(() => import("@pages/Cart"));
-const PlaceOrder = lazy(() => import("@pages/PlaceOrder"));
+import Home from "@pages/Home";
+import Cart from "@pages/Cart";
+import PlaceOrder from "@pages/PlaceOrder";
 
 const router = createBrowserRouter([
 	{
@@ -16,27 +15,15 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: (
-					<Suspense>
-						<Home />
-					</Suspense>
-				),
+				element: <Home />,
 			},
 			{
 				path: "/cart",
-				element: (
-					<Suspense>
-						<Cart />
-					</Suspense>
-				),
+				element: <Cart />,
 			},
 			{
 				path: "/order",
-				element: (
-					<Suspense>
-						<PlaceOrder />
-					</Suspense>
-				),
+				element: <PlaceOrder />,
 			},
 		],
 	},

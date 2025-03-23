@@ -3,11 +3,11 @@ import { useAppSelector } from "@store/hooks";
 import { getCartTotalQuantitySelector } from "@store/Cart/cart.slice";
 import { assets } from "@frontendAssets/assets";
 
-const Header = () => {
+const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateAction<boolean>> }) => {
 	const [menu, isMenu] = useState("home");
 	const totalQuantity = useAppSelector(getCartTotalQuantitySelector);
 	return (
-		<header className="py-5 fixed top-0 left-0 right-0 z-50 bg-white shadow-md">	
+		<header className="py-5 fixed top-0 left-0 right-0 z-40 bg-white shadow-md">	
 			<div className="w-[80%] mx-auto flex justify-between items-center">
 				<img src={assets.logo} alt="Logo" className="w-[120px] md:w-[140px] lg:w-[150px]" />
 				<ul className="hidden sm:flex gap-5">
@@ -58,7 +58,7 @@ const Header = () => {
 						<img src={assets.basket_icon} className="w-[20px] md:w-[22px] lg:w-fit" alt="basket icon" />
 						<div className="dot absolute min-w-2.5 min-h-2.5 w-full h-full flex items-center justify-center bg-tomato -top-4 -right-4 rounded-full text-white text-sm md:text-lg">{totalQuantity}</div>
 					</div>
-					<button className="bg-transparent text-[15px] md:text-base text-[#49557E] border border-tomato py-[7px] px-[20px] md:py-2 md:px-6.5 lg:py-2.5 lg:px-7.5 rounded-[50px] cursor-pointer transition-colors hover:bg-[#fff4f2]">
+					<button onClick={() => setShowLogin(true)} className="bg-transparent text-[15px] md:text-base text-[#49557E] border border-tomato py-[7px] px-[20px] md:py-2 md:px-6.5 lg:py-2.5 lg:px-7.5 rounded-[50px] cursor-pointer transition-colors hover:bg-[#fff4f2]">
 						Sign in
 					</button>
 				</div>
