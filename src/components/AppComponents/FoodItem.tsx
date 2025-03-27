@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { type IProduct } from "@customTypes/FoodList.types";
 import useFoodItem from "@hooks/useFoodItem";
-import { assets } from "@frontendAssets/assets";
+import { assets } from "@assets/assets";
 
 const FoodItem = memo(({ _id, name, description, price, image }: IProduct) => {
-	const {handleAddToCart, handleRemoveFromCart, itemCount} = useFoodItem(_id);
+	const { handleAddToCart, handleRemoveFromCart, itemCount } = useFoodItem(_id);
 
 	return (
 		<article
@@ -22,9 +22,19 @@ const FoodItem = memo(({ _id, name, description, price, image }: IProduct) => {
 					/>
 				) : (
 					<div className="absolute bottom-[15px] right-[15px] flex items-center gap-2.5 p-[6px] -m-[4px] rounded-[50px] bg-white">
-            <img className="w-7.5" onClick={handleRemoveFromCart} src={assets.remove_icon_red} alt="Reduce Count" />
-            <span>{itemCount}</span>
-            <img className="w-7.5" onClick={handleAddToCart} src={assets.add_icon_green} alt="Increase Count" />
+						<img
+							className="w-7.5"
+							onClick={handleRemoveFromCart}
+							src={assets.remove_icon_red}
+							alt="Reduce Count"
+						/>
+						<span>{itemCount}</span>
+						<img
+							className="w-7.5"
+							onClick={handleAddToCart}
+							src={assets.add_icon_green}
+							alt="Increase Count"
+						/>
 					</div>
 				)}
 			</div>

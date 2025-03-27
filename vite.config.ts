@@ -6,8 +6,7 @@ import path from "path";
 export default defineConfig({
 	resolve: {
 		alias: {
-			"@frontendAssets": path.resolve(__dirname, "./src/assets/frontend_assets"),
-			"@adminAssets": path.resolve(__dirname, "./src/assets/admin_assets"),
+			"@assets": path.resolve(__dirname, "./src/assets"),
 			"@components": path.resolve(__dirname, "./src/components"),
 			"@hooks": path.resolve(__dirname, "./src/hooks"),
 			"@pages": path.resolve(__dirname, "./src/pages"),
@@ -16,7 +15,7 @@ export default defineConfig({
 			"@customTypes": path.resolve(__dirname, "./src/types"),
 			"@styles": path.resolve(__dirname, "./src/styles"),
 			"@templates": path.resolve(__dirname, "./src/templates"),
-			// "@services": path.resolve(__dirname, "./src/services"),
+			"@services": path.resolve(__dirname, "./src/services"),
 		},
 	},
 	plugins: [react(), tailwindcss()],

@@ -18,8 +18,7 @@
     // Absolute path imports
     "baseUrl": ".",
     "paths": {
-      "@frontendAssets/*": ["src/assets/frontend_assets/*"],
-      "@adminAssets/*": ["src/assets/admin_assets/*"],
+      "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@hooks/*": ["src/hooks/*"],
       "@pages/*": ["src/pages/*"],
@@ -30,7 +29,7 @@
       "@customTypes": ["src/types/index"],
       "@styles/*": ["src/styles/*"],
       "@templates/*": ["src/templates/*"],
-      // "@services/*": ["src/services/*"],
+      "@services/*": ["src/services/*"],
     },
 
     /* Linting */

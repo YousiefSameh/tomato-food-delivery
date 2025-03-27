@@ -1,12 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 // Templates
 import MainTemplate from "@templates/main.template";
+import Loading from "@components/feedback/Loading";
 
 // Pages
-import Home from "@pages/Home";
-import Cart from "@pages/Cart";
-import PlaceOrder from "@pages/PlaceOrder";
+const Home = lazy(() => import("@pages/Home"));
+const Cart = lazy(() => import("@pages/Cart"));
+const PlaceOrder = lazy(() => import("@pages/PlaceOrder"));
 
 const router = createBrowserRouter([
 	{
@@ -15,15 +17,27 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Home />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<Home />
+					</Suspense>
+				),
 			},
 			{
 				path: "/cart",
-				element: <Cart />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<Cart />
+					</Suspense>
+				),
 			},
 			{
 				path: "/order",
-				element: <PlaceOrder />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<PlaceOrder />
+					</Suspense>
+				),
 			},
 		],
 	},

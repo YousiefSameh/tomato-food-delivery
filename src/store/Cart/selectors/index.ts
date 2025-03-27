@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../..";
-import { food_list } from "@frontendAssets/assets";
+import { food_list } from "@assets/assets";
 
 const getCartTotalQuantitySelector = createSelector(
 	(state: RootState) => state.cart.items,

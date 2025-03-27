@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IProduct } from "@customTypes/FoodList.types";
-import { food_list } from "@frontendAssets/assets";
+import { food_list } from "@assets/assets";
 
 interface IFoodListState {
 	foodList: IProduct[];

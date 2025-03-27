@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "@components/shared/Header";
 import Footer from "@components/shared/Footer";
 import Login from "@components/AppComponents/Login";
-import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 const MainTemplate = () => {
 	const [ showLogin, setShowLogin ] = useState(false);
@@ -16,6 +17,7 @@ const MainTemplate = () => {
 				</div>
 			</div>
 			<Footer />
+			<ToastContainer />
 		</>
 	);
 };
