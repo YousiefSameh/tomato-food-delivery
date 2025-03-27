@@ -1,3 +1,5 @@
 import { IProduct } from "./FoodList.types";
+import { TLoading } from "./shared";
+import { isString } from "./guards.type";
 
-export { type IProduct };
+export { type IProduct, type TLoading, isString };

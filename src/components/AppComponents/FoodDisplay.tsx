@@ -1,8 +1,14 @@
-import { useAppSelector } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import FoodItem from "./FoodItem";
+import { useEffect } from "react";
+import { actGetAllFood } from "@store/FoodList/FoodList.slice";
 
 const FoodDisplay = ({ category }: { category: string }) => {
+	const dispatch = useAppDispatch();
 	const { foodList } = useAppSelector((state) => state.foodList);
+	useEffect(() => {
+		dispatch(actGetAllFood());
+	}, [dispatch, foodList])
 	return (
 		<section className="pb-24 sm:pb-32" id="food-display">
 			<h2 className="font-semibold" style={{ fontSize: "max(2vw, 24px)" }}>Top dishes near you</h2>
@@ -16,7 +22,7 @@ const FoodDisplay = ({ category }: { category: string }) => {
 							name={food.name}
 							description={food.description}
 							price={food.price}
-							image={food.image}
+							image={import.meta.env.VITE_BACKEND_URL + "/image/" + food.image}
 						/>
 					);
 				})}

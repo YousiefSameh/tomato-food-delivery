@@ -22,7 +22,7 @@ const useLogin = (setShowLogin: React.Dispatch<React.SetStateAction<boolean>>) =
 		e.preventDefault();
 		if (currentState === "Login") {
 			try {
-				const response = await API.post("/user/login", data);
+				const response = await API.post("/api/user/login", data);
 				if (response.data.success) {
 					localStorage.setItem("token", response.data.token);
 					toast.success(response.data.message);
@@ -35,7 +35,7 @@ const useLogin = (setShowLogin: React.Dispatch<React.SetStateAction<boolean>>) =
 			}
 		} else {
 			try {
-				const response = await API.post("/user/register", data);
+				const response = await API.post("/api/user/register", data);
 				if (response.data.success) {
 					localStorage.setItem("token", response.data.token);
 					toast.success(response.data.message);
