@@ -1,7 +1,7 @@
-import API from "@services/api.services";
-import { useAppSelector } from "@store/hooks";
 import { useEffect } from "react";
+import { useAppSelector } from "@store/hooks";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import API from "@services/api.services";
 
 const Verify = () => {
   const navigate = useNavigate();
@@ -20,6 +20,7 @@ const Verify = () => {
   useEffect(() => {
     verifyPayment();
   }, [])
+
 	return (
 		<div className="verify min-h-[60vh] grid">
 			<div className="spinner w-[100px] h-[100px] place-self-center border-[5px] border-[#bdbdbd] border-t-tomato rounded-[50%] animate-[rotate_1s_infinite]"></div>
