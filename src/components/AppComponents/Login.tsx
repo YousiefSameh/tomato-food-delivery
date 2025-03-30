@@ -40,6 +40,7 @@ const Login = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateAc
 								name="password"
 								onChange={onChangeHandler}
 								value={data.password}
+								required
 								type="password"
 								placeholder="Enter Your Password ..."
 								className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-tomato"
@@ -52,6 +53,7 @@ const Login = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateAc
 								name="name"
 								onChange={onChangeHandler}
 								value={data.name}
+								required
 								type="text"
 								autoComplete="given-name"
 								placeholder="Enter Your Name ..."
@@ -62,16 +64,17 @@ const Login = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateAc
 								name="email"
 								onChange={onChangeHandler}
 								value={data.email}
+								required
 								type="email"
 								autoComplete="email"
 								placeholder="Enter Your Email ..."
-								required
 								className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-tomato"
 							/>
 							<input
 								id="password"
 								name="password"
 								onChange={onChangeHandler}
+								required
 								value={data.password}
 								type="password"
 								placeholder="Enter Your Password ..."

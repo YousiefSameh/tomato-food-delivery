@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { type IProduct } from "@customTypes/FoodList.types";
+import { type IProduct } from "@customTypes/products.types";
 import useFoodItem from "@hooks/useFoodItem";
 import { assets } from "@assets/assets";
 

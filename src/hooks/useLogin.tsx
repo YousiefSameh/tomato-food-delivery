@@ -1,9 +1,12 @@
 import { useState } from "react";
-import API from "@services/api.services";
+import { useAppDispatch } from "@store/hooks";
+import { actAuthLogin, actAuthRegister } from "@store/auth/auth.slice";
 import { toast } from "react-toastify";
-import { isAxiosError } from "axios";
 
-const useLogin = (setShowLogin: React.Dispatch<React.SetStateAction<boolean>>) => {
+const useLogin = (
+	setShowLogin: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+	const dispatch = useAppDispatch();
 	const [currentState, setCurrentState] = useState("Sign Up");
 	const [agreed, setAgreed] = useState(false);
 	const [data, setData] = useState({
@@ -21,34 +24,40 @@ const useLogin = (setShowLogin: React.Dispatch<React.SetStateAction<boolean>>) =
 	const submitHandler = async (e: React.FormEvent) => {
 		e.preventDefault();
 		if (currentState === "Login") {
-			try {
-				const response = await API.post("/api/user/login", data);
-				if (response.data.success) {
-					localStorage.setItem("token", response.data.token);
-					toast.success(response.data.message);
+			dispatch(actAuthLogin(data))
+				.unwrap()
+				.then(() => {
+					toast.success("Login Done Successfully");
 					setShowLogin(false);
-				}
-			} catch (error) {
-				if (isAxiosError(error)) {
-					toast.error(error.response?.data.message);
-				}
-			}
+				})
+				.catch((error) => {
+					if (error.success === false) {
+						toast.error("Login failed: " + error.message);
+					}
+				});
 		} else {
-			try {
-				const response = await API.post("/api/user/register", data);
-				if (response.data.success) {
-					localStorage.setItem("token", response.data.token);
-					toast.success(response.data.message);
-					setShowLogin(false)
-				}
-			} catch (error) {
-				if (isAxiosError(error)) {
-					toast.error(error.response?.data.message);
-				}
-			}
+			dispatch(actAuthRegister(data))
+				.unwrap()
+				.then(() => {
+					toast.success("Registeration Done Successfully");
+					setShowLogin(false);
+				})
+				.catch((error) => {
+					if (error.success === false) {
+						toast.error("Registeration failed: " + error.message);
+					}
+				});
 		}
 	};
-	return { data, currentState, agreed, setAgreed, setCurrentState, onChangeHandler, submitHandler };
+	return {
+		data,
+		currentState,
+		agreed,
+		setAgreed,
+		setCurrentState,
+		onChangeHandler,
+		submitHandler,
+	};
 };
 
 export default useLogin;

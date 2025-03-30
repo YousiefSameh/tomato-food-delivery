@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { useAppSelector } from "@store/hooks";
-import { getCartTotalQuantitySelector } from "@store/Cart/cart.slice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { getCartTotalQuantitySelector } from "@store/cart/cart.slice";
 import { assets } from "@assets/assets";
 import { Link, useNavigate } from "react-router-dom";
+import { authLogout } from "@store/auth/auth.slice";
 
 const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateAction<boolean>> }) => {
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const [menu, isMenu] = useState("home");
+	const { token } = useAppSelector(state => state.auth);
 	const totalQuantity = useAppSelector(getCartTotalQuantitySelector);
-	const token = localStorage.getItem("token");
-
+	const [menu, isMenu] = useState("home");
+	
 	const logout = () => {
-		localStorage.removeItem("token");
-		navigate("/")
-	}
+		dispatch(authLogout());
+		navigate("/");
+	};
 
 	return (
 		<header className="py-5 fixed top-0 left-0 right-0 z-40 bg-white shadow-md">
@@ -90,7 +92,7 @@ const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateA
 							{totalQuantity}
 						</div>
 					</div>
-					{ !token ? (
+					{!token ? (
 						<button
 							onClick={() => setShowLogin(true)}
 							className="bg-transparent text-[15px] md:text-base text-[#49557E] border border-tomato py-[7px] px-[20px] md:py-2 md:px-6.5 lg:py-2.5 lg:px-7.5 rounded-[50px] cursor-pointer transition-colors hover:bg-[#fff4f2]"
@@ -105,9 +107,16 @@ const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateA
 									<img src={assets.bag_icon} className="w-5" alt="Bag Icon" />
 									<p>Orders</p>
 								</li>
-								<hr className="w-full bg-[#acacac]"/>
-								<li className="flex items-center gap-2.5 cursor-pointer hover:text-tomato" onClick={logout}>
-									<img src={assets.logout_icon} className="w-5" alt="Logout Icon" />
+								<hr className="w-full bg-[#acacac]" />
+								<li
+									className="flex items-center gap-2.5 cursor-pointer hover:text-tomato"
+									onClick={logout}
+								>
+									<img
+										src={assets.logout_icon}
+										className="w-5"
+										alt="Logout Icon"
+									/>
 									<p>Logout</p>
 								</li>
 							</ul>

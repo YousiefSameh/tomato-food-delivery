@@ -1,4 +1,4 @@
-import { IProduct } from "./FoodList.types";
+import { IProduct } from "./products.types";
 import { TLoading } from "./shared";
 import { isString } from "./guards.type";
 

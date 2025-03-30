@@ -7,7 +7,9 @@ const FoodDisplay = ({ category }: { category: string }) => {
 	const dispatch = useAppDispatch();
 	const { foodList } = useAppSelector((state) => state.foodList);
 	useEffect(() => {
-		dispatch(actGetAllFood());
+		if (foodList.length <= 0) {
+			dispatch(actGetAllFood());
+		}
 	}, [dispatch, foodList])
 	return (
 		<section className="pb-24 sm:pb-32" id="food-display">
