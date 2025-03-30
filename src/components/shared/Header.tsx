@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { getCartTotalQuantitySelector } from "@store/Cart/cart.slice";
 import { assets } from "@assets/assets";
 import { Link, useNavigate } from "react-router-dom";
-import { authLogout } from "@store/Auth/auth.slice";
+import { authLogout } from "@store/auth/auth.slice";
 
 const Header = ({
 	setShowLogin,

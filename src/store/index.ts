@@ -14,7 +14,7 @@ import storage from "redux-persist/lib/storage";
 
 import foodList from "./FoodList/FoodList.slice";
 import cart from "./Cart/cart.slice";
-import auth from "./Auth/auth.slice";
+import auth from "./auth/auth.slice";
 
 const rootPersistConfig = {
 	key: "root",

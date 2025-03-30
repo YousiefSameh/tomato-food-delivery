@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "@store/hooks";
-import { actAuthLogin, actAuthRegister } from "@store/Auth/auth.slice";
+import { actAuthLogin, actAuthRegister } from "@store/auth/auth.slice";
 import { toast } from "react-toastify";
 
 const useLogin = (
