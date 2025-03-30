@@ -36,7 +36,7 @@ To set up the project locally, follow these steps:
 
 1. **Clone the Repository**:
   ```bash
-  git clone https://github.com/your-username/tomato-food-delivery.git
+  git clone https://github.com/YousiefSameh/tomato-food-delivery.git
   cd tomato-food-delivery
   ```
 
@@ -140,7 +140,7 @@ We welcome contributions to improve **Tomato Food Delivery**! To contribute, fol
 2. **Clone Your Fork**:
   Clone your forked repository to your local machine:
   ```bash
-  git clone https://github.com/your-username/tomato-food-delivery.git
+  git clone https://github.com/YousiefSameh/tomato-food-delivery.git
   cd tomato-food-delivery
   ```
 
