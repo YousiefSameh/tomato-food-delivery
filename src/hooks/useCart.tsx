@@ -16,7 +16,7 @@ const useCart = () => {
     (state) => state.cart
   );
 
-	const CalculateSubtoal = useAppSelector(getTotalCartAmountSelector)
+  const CalculateSubtoal = useAppSelector((state) => getTotalCartAmountSelector(state));
 
 	const changeQuantityHandler = useCallback(
     (id: string, quantity: number) => {

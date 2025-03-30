@@ -9,6 +9,7 @@ import Loading from "@components/feedback/Loading";
 const Home = lazy(() => import("@pages/Home"));
 const Cart = lazy(() => import("@pages/Cart"));
 const PlaceOrder = lazy(() => import("@pages/PlaceOrder"));
+const Verify = lazy(() => import("@pages/Verify"));
 
 const router = createBrowserRouter([
 	{
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={<Loading />}>
 						<PlaceOrder />
+					</Suspense>
+				),
+			},
+			{
+				path: "/verify",
+				element: (
+					<Suspense fallback={<Loading />}>
+						<Verify />
 					</Suspense>
 				),
 			},

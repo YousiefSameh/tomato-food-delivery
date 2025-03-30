@@ -15,17 +15,22 @@ const getCartTotalQuantitySelector = createSelector(
 );
 
 const getTotalCartAmountSelector = createSelector(
-	(state: RootState) => state.cart.items,
-	(state: RootState) => state.foodList.foodList,
+	[
+		(state: RootState) => state.cart.items,
+		(state: RootState) => state.foodList.foodList
+	],
 	(items, foodList) => {
-		let totalAmount = 0;
-		for (const item in items) {
-			const itemInfo = foodList.find((food) => food._id === item);
-			if (itemInfo) {
-				totalAmount += itemInfo.price * items[item];
-			}
+		if (!items || Object.keys(items).length === 0 || Object.values(items).every(quantity => quantity === 0)) {
+			console.log("Cart is empty or quantities are zero.");
+			return 0;
 		}
-		return totalAmount;
+		return Object.entries(items).reduce((totalAmount, [itemId, quantity]) => {
+			const itemInfo = foodList.find((food) => food._id === itemId);
+			if (!itemInfo) {
+				console.warn(`Item with ID ${itemId} not found in foodList.`);
+			}
+			return itemInfo ? totalAmount + itemInfo.price * quantity : totalAmount;
+		}, 0);
 	}
 );
 
