@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { getCartTotalQuantitySelector } from "@store/cart/cart.slice";
+import { getCartTotalQuantitySelector } from "@store/Cart/cart.slice";
 import { assets } from "@assets/assets";
 import { Link, useNavigate } from "react-router-dom";
-import { authLogout } from "@store/auth/auth.slice";
+import { authLogout } from "@store/Auth/auth.slice";
 
-const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const Header = ({
+	setShowLogin,
+}: {
+	setShowLogin: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const { token } = useAppSelector(state => state.auth);
+	const { token } = useAppSelector((state) => state.auth);
 	const totalQuantity = useAppSelector(getCartTotalQuantitySelector);
 	const [menu, isMenu] = useState("home");
-	
+
 	const logout = () => {
 		dispatch(authLogout());
 		navigate("/");
@@ -103,7 +107,10 @@ const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateA
 						<div className="navbar-profile relative group">
 							<img src={assets.profile_icon} alt="User Profile Icon" />
 							<ul className="nav-profile-dropdown absolute right-0  hidden z-10 group-hover:flex flex-col items-start w-[135px] gap-2.5 bg-[#fff2ef] py-3 px-6.5 rounded-sm border border-tomato outline-2 outline-white">
-								<li onClick={() => navigate("/myOrders")}  className="flex items-center gap-2.5 cursor-pointer hover:text-tomato">
+								<li
+									onClick={() => navigate("/myOrders")}
+									className="flex items-center gap-2.5 cursor-pointer hover:text-tomato"
+								>
 									<img src={assets.bag_icon} className="w-5" alt="Bag Icon" />
 									<p>Orders</p>
 								</li>

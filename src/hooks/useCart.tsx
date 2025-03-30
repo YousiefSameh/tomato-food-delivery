@@ -6,55 +6,54 @@ import {
 	cartItemRemove,
 	cleanCartProductsFullInfo,
 	getTotalCartAmountSelector,
-} from "@store/cart/cart.slice";
+} from "@store/Cart/cart.slice";
 import { useCallback, useEffect } from "react";
 
 const useCart = () => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-  const { items, productsFullInfo } = useAppSelector(
-    (state) => state.cart
-  );
+	const { items, productsFullInfo } = useAppSelector((state) => state.cart);
 
-  const CalculateSubtoal = useAppSelector((state) => getTotalCartAmountSelector(state));
+	const CalculateSubtoal = useAppSelector((state) =>
+		getTotalCartAmountSelector(state)
+	);
 
 	const changeQuantityHandler = useCallback(
-    (id: string, quantity: number) => {
-      dispatch(cartItemChangeQuantity({ id, quantity }));
-      return 0;
-    },
-    [dispatch]
-  );
+		(id: string, quantity: number) => {
+			dispatch(cartItemChangeQuantity({ id, quantity }));
+			return 0;
+		},
+		[dispatch]
+	);
 
-  const removeItemHandler = useCallback(
-    (id: string) => {
-      dispatch(cartItemRemove(id));
-      return 0;
-    },
-    [dispatch]
-  );
+	const removeItemHandler = useCallback(
+		(id: string) => {
+			dispatch(cartItemRemove(id));
+			return 0;
+		},
+		[dispatch]
+	);
 
 	const products = productsFullInfo.map((el) => ({
 		...el,
 		quantity: items[el._id],
 	}));
-	
+
 	useEffect(() => {
 		const promise = dispatch(actGetProductsByItems());
-    return () => {
+		return () => {
 			promise.abort();
-      dispatch(cleanCartProductsFullInfo());
-    };
-  }, [dispatch]);
-	
+			dispatch(cleanCartProductsFullInfo());
+		};
+	}, [dispatch]);
 
 	return {
-    products,
+		products,
 		CalculateSubtoal,
-    changeQuantityHandler,
-    removeItemHandler,
+		changeQuantityHandler,
+		removeItemHandler,
 		navigate,
-  };
+	};
 };
 
 export default useCart;

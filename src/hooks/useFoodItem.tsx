@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { addToCart, cartItemRemove } from "@store/cart/cart.slice";
+import { addToCart, cartItemRemove } from "@store/Cart/cart.slice";
 import { toast } from "react-toastify";
 import API from "@services/api.services";
 import { isAxiosError } from "axios";
 
 const useFoodItem = (_id: string) => {
 	const dispatch = useAppDispatch();
-	const { token } = useAppSelector(state => state.auth);
+	const { token } = useAppSelector((state) => state.auth);
 	const { items } = useAppSelector((state) => state.cart);
 	const [itemCount, setItemCount] = useState(items[Number(_id)] || 0);
 

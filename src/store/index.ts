@@ -12,9 +12,9 @@ import {
 
 import storage from "redux-persist/lib/storage";
 
-import foodList from "./foodList/FoodList.slice";
-import cart from "./cart/cart.slice";
-import auth from "./auth/auth.slice";
+import foodList from "./FoodList/FoodList.slice";
+import cart from "./Cart/cart.slice";
+import auth from "./Auth/auth.slice";
 
 const rootPersistConfig = {
 	key: "root",

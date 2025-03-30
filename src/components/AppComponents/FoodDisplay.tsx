@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import FoodItem from "./FoodItem";
 import { useEffect } from "react";
-import { actGetAllFood } from "@store/foodList/FoodList.slice";
+import { actGetAllFood } from "@store/FoodList/FoodList.slice";
 
 const FoodDisplay = ({ category }: { category: string }) => {
 	const dispatch = useAppDispatch();
