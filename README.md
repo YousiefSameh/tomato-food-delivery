@@ -90,7 +90,6 @@ tomato-food-delivery/
 ├── src/                  # Source code
 │   ├── assets/           # Static assets used in components
 │   ├── components/       # Reusable React components
-│   ├── features/         # Redux slices and feature-specific logic
 │   ├── hooks/            # Custom React hooks
 │   ├── pages/            # Page components for routing
 │   ├── routes/           # Application routes
