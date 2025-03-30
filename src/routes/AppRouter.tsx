@@ -10,6 +10,7 @@ const Home = lazy(() => import("@pages/Home"));
 const Cart = lazy(() => import("@pages/Cart"));
 const PlaceOrder = lazy(() => import("@pages/PlaceOrder"));
 const Verify = lazy(() => import("@pages/Verify"));
+const MyOrders = lazy(() => import("@pages/MyOrders"));
 
 const router = createBrowserRouter([
 	{
@@ -45,6 +46,14 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={<Loading />}>
 						<Verify />
+					</Suspense>
+				),
+			},
+			{
+				path: "/myOrders",
+				element: (
+					<Suspense fallback={<Loading />}>
+						<MyOrders />
 					</Suspense>
 				),
 			},

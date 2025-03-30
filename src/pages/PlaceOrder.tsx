@@ -1,12 +1,16 @@
-import { useState } from "react";
-import { useAppSelector } from "@store/hooks";
-import { getTotalCartAmountSelector } from "@store/cart/selectors";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import API from "@services/api.services";
+import { getTotalCartAmountSelector } from "@store/cart/selectors";
+import { clearCartAfterPlaceOrder } from "@store/cart/cart.slice";
 import { isAxiosError } from "axios";
-import { toast } from "react-toastify";
 import { IProduct } from "@customTypes/products.types";
+import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { token } = useAppSelector(state => state.auth);
   const { foodList } = useAppSelector(state => state.foodList);
   const { items } = useAppSelector(state => state.cart);
@@ -49,6 +53,7 @@ const PlaceOrder = () => {
       if (res.data.success) {
         const { session_url } = res.data;
         window.location.replace(session_url);
+        dispatch(clearCartAfterPlaceOrder());
       }
     } catch (error) {
       if (isAxiosError(error)) {
@@ -56,6 +61,14 @@ const PlaceOrder = () => {
       }
     }
   }
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/cart");
+    } else if (CalculateSubtoal === 0) {
+      navigate("/");
+    }
+  }, [CalculateSubtoal, navigate, token])
 
   return (
     <form onSubmit={placeOrder} className="place-order flex flex-col md:flex-row items-start justify-between gap-[50px] mt-[100px] mb-[50px]">

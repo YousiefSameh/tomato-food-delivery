@@ -1,5 +1,6 @@
-import { IProduct } from "./products.types";
-import { TLoading } from "./shared";
+import { type IProduct } from "./products.types";
+import { type TLoading } from "./shared";
 import { isString } from "./guards.type";
+import { type IOrder, type IOrderItem } from "./order.types";
 
-export { type IProduct, type TLoading, isString };
+export { IProduct, TLoading, IOrder, IOrderItem, isString };

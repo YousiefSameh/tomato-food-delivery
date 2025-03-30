@@ -103,7 +103,7 @@ const Header = ({ setShowLogin }: { setShowLogin: React.Dispatch<React.SetStateA
 						<div className="navbar-profile relative group">
 							<img src={assets.profile_icon} alt="User Profile Icon" />
 							<ul className="nav-profile-dropdown absolute right-0  hidden z-10 group-hover:flex flex-col items-start w-[135px] gap-2.5 bg-[#fff2ef] py-3 px-6.5 rounded-sm border border-tomato outline-2 outline-white">
-								<li className="flex items-center gap-2.5 cursor-pointer hover:text-tomato">
+								<li onClick={() => navigate("/myOrders")}  className="flex items-center gap-2.5 cursor-pointer hover:text-tomato">
 									<img src={assets.bag_icon} className="w-5" alt="Bag Icon" />
 									<p>Orders</p>
 								</li>

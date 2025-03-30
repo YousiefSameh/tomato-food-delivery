@@ -1,4 +1,4 @@
-export interface IProduct {
+interface IProduct {
   _id: string;
   name: string;
   description: string;
@@ -7,3 +7,5 @@ export interface IProduct {
   quantity?: number;
   price: number;
 }
+
+export { type IProduct };
