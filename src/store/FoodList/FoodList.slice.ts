@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IProduct, TLoading, isString } from "@customTypes/index";
+import { IProduct, TLoading } from "@customTypes/index";
 import actGetAllFood from "./act/actGetAllFood";
 
 interface IFoodListState {
 	foodList: IProduct[];
 	loading: TLoading;
-  error: string | null;
+	error: string | null;
 }
 
 const initialState: IFoodListState = {
 	foodList: [],
 	loading: "idle",
-	error: null
+	error: null,
 };
 
 const FoodListSlice = createSlice({
@@ -20,20 +20,20 @@ const FoodListSlice = createSlice({
 	reducers: {},
 	extraReducers: (builder) => {
 		builder.addCase(actGetAllFood.pending, (state) => {
-      state.loading = "pending";
-      state.error = null;
-    });
-    builder.addCase(actGetAllFood.fulfilled, (state, action) => {
-      state.loading = "succeeded";
-      state.foodList = action.payload.data;
-    });
-    builder.addCase(actGetAllFood.rejected, (state, action) => {
-      state.loading = "failed";
-      if (isString(action.payload)) {
-        state.error = action.payload;
-      }
-    });
-	}
+			state.loading = "pending";
+			state.error = null;
+		});
+		builder.addCase(actGetAllFood.fulfilled, (state, action) => {
+			state.loading = "succeeded";
+			state.foodList = action.payload.data;
+		});
+		builder.addCase(actGetAllFood.rejected, (state, action) => {
+			state.loading = "failed";
+			if (action.payload && typeof action.payload === "string") {
+				state.error = action.payload;
+			}
+		});
+	},
 });
 
 export { actGetAllFood };
