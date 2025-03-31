@@ -5,10 +5,16 @@ const Cart = () => {
 	const {
 		products,
 		CalculateSubtoal,
+		discount,
+		promocode,
+		setPromocode,
+		appliedPromocodes,
 		changeQuantityHandler,
 		removeItemHandler,
+		applyPromocodeHandler,
 		navigate,
 	} = useCart();
+
 	return (
 		<main className="my-[150px]">
 			<div className="cart-items-container overflow-x-scroll sm:overflow-x-visible">
@@ -55,8 +61,18 @@ const Cart = () => {
 						</div>
 						<hr className="h-[1px] bg-[#e2e2e2] border-none my-2.5" />
 						<div className="cart-total-details flex justify-between text-[#555]">
+							<p>Discount: </p>
+							<p>${discount}</p>
+						</div>
+						<hr className="h-[1px] bg-[#e2e2e2] border-none my-2.5" />
+						<div className="cart-total-details flex justify-between text-[#555]">
 							<strong>Total</strong>
-							<strong>${CalculateSubtoal ? CalculateSubtoal + 10 : 0}</strong>
+							<strong>
+								$
+								{CalculateSubtoal
+									? Math.max(CalculateSubtoal + 10 - discount, 0)
+									: 0}
+							</strong>
 						</div>
 					</div>
 					<button
@@ -76,14 +92,27 @@ const Cart = () => {
 								type="text"
 								className="bg-transparent outline-none border-none pl-2.5"
 								placeholder="Enter Your Promocode ..."
+								value={promocode}
+								onChange={(e) => setPromocode(e.target.value)}
 							/>
 							<button
+								onClick={applyPromocodeHandler}
 								className="bg-tomato text-white py-3 px-1.5 cursor-pointer rounded-r-sm"
 								style={{ width: "max(10vw, 150px)" }}
 							>
 								Apply
 							</button>
 						</div>
+						{appliedPromocodes.length > 0 && (
+							<div className="mt-2 p-3 bg-green-100 border border-green-400 text-green-600 rounded-md">
+								<p>Applied Promocodes:</p>
+								<ul>
+									{appliedPromocodes.map((code) => (
+										<li key={code}>- {code}</li>
+									))}
+								</ul>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
