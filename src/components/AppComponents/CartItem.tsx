@@ -21,7 +21,7 @@ const CartItem = memo(
 		removeItemHandler,
 	}: CartItemProps) => {
 		const { token } = useAppSelector(state => state.auth);
-		const url = "http://localhost:4000/image/";
+		const url = "https://tomato-food-delivery-n3l8.onrender.com/image/";
 		const renderOptions = Array(9)
 			.fill(0)
 			.map((_, idx) => {
