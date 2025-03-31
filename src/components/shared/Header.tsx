@@ -79,11 +79,6 @@ const Header = ({
 					</li>
 				</ul>
 				<div className="flex items-center gap-5 md:gap-7.5 lg:gap-10">
-					<img
-						src={assets.search_icon}
-						className="w-[20px] md:w-[22px] lg:w-fit"
-						alt="Search Icon"
-					/>
 					<div className="relative">
 						<Link to="/cart">
 							<img
