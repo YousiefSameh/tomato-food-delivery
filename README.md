@@ -84,7 +84,6 @@ In the project directory, you can run the following scripts:
 ```markdown
 The project structure is organized as follows:
 
-```
 tomato-food-delivery/
 ├── public/               # Static assets (e.g., images, favicon)
 ├── src/                  # Source code
@@ -106,7 +105,6 @@ tomato-food-delivery/
 ├── package.json          # Project dependencies and scripts
 ├── tsconfig.json         # TypeScript configuration
 └── vite.config.ts        # Vite configuration
-```
 
 This structure ensures a clean separation of concerns and makes the codebase easy to navigate and maintain.
 ```
