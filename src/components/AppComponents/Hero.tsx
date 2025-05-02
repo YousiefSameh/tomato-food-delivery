@@ -15,7 +15,7 @@ const Hero = () => {
 			>
 				<h1
 					className="font-medium text-white"
-					style={{ fontSize: "max(4.5vw, 22px)" }}
+					style={{ fontSize: "max(4.5vw, 16px)" }}
 				>
 					Order your favorite food here
 				</h1>
